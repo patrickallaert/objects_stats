@@ -97,4 +97,4 @@ $foo = null;
  
 print_r (get_objects_count(array('stdClass')));
 // Array ( [stdClass] => 0 )
-```php
+```
