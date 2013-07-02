@@ -1,8 +1,8 @@
-dnl config.m4 for object_stats
+dnl config.m4 for objects_stats
 
-PHP_ARG_ENABLE(object_stats, whether to enable object_stats support,
-[  --enable-object-stats          Enable object_stats support])
+PHP_ARG_ENABLE(objects_stats, whether to enable objects_stats support,
+[  --enable-objects-stats          Enable objects_stats support])
 
-if test "$PHP_OBJECT_STATS" != "no"; then
-    PHP_NEW_EXTENSION(object_stats, object_stats.c, $ext_shared)
+if test "$PHP_OBJECTS_STATS" != "no"; then
+    PHP_NEW_EXTENSION(objects_stats, objects_stats.c, $ext_shared)
 fi

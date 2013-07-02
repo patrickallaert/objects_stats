@@ -5,26 +5,24 @@
 #include "php.h"
 #include "php_ini.h"
 #include "ext/standard/info.h"
-#include "php_object_stats.h"
-
-static PHP_FUNCTION(get_objects_count);
+#include "php_objects_stats.h"
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_get_objects_count, 0, 0, 0)
     ZEND_ARG_INFO(0, criteria)
 ZEND_END_ARG_INFO()
 
-zend_function_entry object_stats_functions[] =
+zend_function_entry objects_stats_functions[] =
 {
     ZEND_FE(get_objects_count, arginfo_get_objects_count)
     {NULL,NULL,NULL} /* Marks the end of function entries */
 };
 
-/* {{{ object_stats_module_entry
+/* {{{ objects_stats_module_entry
  */
-zend_module_entry object_stats_module_entry = {
+zend_module_entry objects_stats_module_entry = {
     STANDARD_MODULE_HEADER,
-    "object_stats",
-    object_stats_functions, /* Function entries */
+    "objects_stats",
+    objects_stats_functions, /* Function entries */
     NULL, /* Module init */
     NULL, /* Module shutdown */
     NULL, /* Request init */
@@ -35,8 +33,8 @@ zend_module_entry object_stats_module_entry = {
 };
 /* }}} */
 
-#ifdef COMPILE_DL_OBJECT_STATS
-ZEND_GET_MODULE(object_stats)
+#ifdef COMPILE_DL_OBJECTS_STATS
+ZEND_GET_MODULE(objects_stats)
 #endif
 
 /* {{{ _zend_hash_index_search */
@@ -149,6 +147,7 @@ enter:
                         zval *zcount;
                         zval **zcounted;
 
+                        // FIXME: do not use strlen()
                         size_t zlength = strlen(zobject->ce->name);
 
                         if (class_list) {
